@@ -1,0 +1,11 @@
+---
+- name: Create new repo
+  hosts: git
+  vars_prompt:
+    - name: repo_name
+      prompt: Name of the repo
+      private: false
+
+  tasks:
+    - name: Git initalization
+      shell: git init --bare {{repo_name|quote}}

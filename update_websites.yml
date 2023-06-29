@@ -1,0 +1,14 @@
+---
+- name: Update websites
+  hosts: home
+  vars_prompt:
+    - name: pass
+      prompt: Type in your password
+      private: true
+
+  tasks:
+    - name: Update HTTP/HTTPS website
+      shell: cd /var/www/main && echo {{pass|quote}} | sudo -S git pull
+
+    - name: Update Gemini capsule
+      shell: docker exec -it gemini gemini

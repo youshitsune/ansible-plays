@@ -8,7 +8,7 @@
 
   tasks:
     - name: Update HTTP/HTTPS website
-      shell: cd /var/www/main && echo {{pass|quote}} | sudo -S git pull
+      shell: echo {{pass|quote}} | sudo -S systemctl restart kineto
 
     - name: Update Gemini capsule
-      shell: docker exec -it gemini gemini
+      shell: cd gemini/content/ && git pull

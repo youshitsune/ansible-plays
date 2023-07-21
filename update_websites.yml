@@ -1,14 +1,10 @@
 ---
 - name: Update websites
   hosts: home
-  vars_prompt:
-    - name: pass
-      prompt: Type in your password
-      private: true
 
   tasks:
     - name: Update Gemini capsule
       shell: cd gemini/ && git pull
 
     - name: Update HTTP/HTTPS website
-      shell: echo {{pass|quote}} | sudo -S systemctl restart kineto
+      shell: cd /var/www/main && git pull
